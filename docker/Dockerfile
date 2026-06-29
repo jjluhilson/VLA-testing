@@ -6,6 +6,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-pip \
     python3-dev \
+    python3-numpy \
+    python3-opencv \
     git \
     libgl1 \
     libegl1 \
@@ -13,6 +15,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libglfw3 \
     libglew-dev \
     patchelf \
+    libglib2.0-0 \
+    libxcb-cursor0 \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /vla_ws
@@ -21,8 +25,7 @@ WORKDIR /vla_ws
 RUN pip3 install --no-cache-dir --break-system-packages \
     gymnasium \
     gymnasium-robotics \
-    mujoco \
-    numpy
+    mujoco
 
 COPY src /vla_ws/src
 
